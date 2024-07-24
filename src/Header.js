@@ -1,15 +1,19 @@
-import { Component } from 'react';
+import { Component, useState } from 'react';
 import CustomComponent from './CustomComponent';
 import Laptops from './Laptops';
 import logo from './logo.svg';
 import MyButton from './CustomButton'
 import Counter from './Counter';
+import Slider from './ImageSlider';
+import Form from './Form';
+import RestApiCall from './RestAPICall';
 
 
 //creating components using class
 class Header extends Component{
     render(){
-        let flag = true;
+        let flag = false;
+        
         // Conditional rendering
         if(flag){
             return (
@@ -18,6 +22,9 @@ class Header extends Component{
                 <Counter 
                     defaultValue={5}
                 />
+
+              
+                
 
                 <MyButton onClick={this.props.onClickFirst}> First Button </MyButton>
                 <MyButton onClick={this.props.onClickSecond}> Second Button </MyButton>
@@ -35,11 +42,19 @@ class Header extends Component{
                     {/* Use props to display the text */}
                     {this.props.linkDesc}
                   </a>
+                  <Form/>
                 </header>
+                <Slider/>
               </div>
             );
         } else{
-        return <Laptops/>
+        return (
+            <div>
+                            {/* <Laptops/> */}
+                            <RestApiCall/>
+            </div>
+
+        )
         }
     }
 }
@@ -48,6 +63,11 @@ class Header extends Component{
 // Creating components using functions
 // const Header = ({linkDesc, myProfile,messages,addTwoNumbers, onClickFirst, onClickSecond}) => {
 //     let flag = true;
+
+
+//     const [visible, setVisible] = useState(true);
+//     const buttonText = visible?'Hide':'Show';
+
 //     // Conditional rendering
 //     if(flag){
 //         return(<div className="App">
@@ -81,11 +101,18 @@ class Header extends Component{
 //                 <br />
 //                 {addTwoNumbers(1,2)}
 //             </a>
+//             <div>
+//                 {/* Add slider if visible is true */}
+//                 {visible? <Slider/>:<div></div>}
+//                 {/* <button onClick={setVisible(!visible)}>Show/hide</button> */}
+//                 <button onClick={()=>{setVisible(!visible)}}>{buttonText}</button>
+//             </div>
+
 //             </header>        
 //         </div>);
 //     } else{
 //        return <Laptops/>
 //     }
 // }
-// 
+
 export default Header
