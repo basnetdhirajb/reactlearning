@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Header from './Header';
 
 function App() {
+  let linkDescription = "Learn React from the docs!"
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Header
+    // Passing props to header
+    linkDesc="Learn React from the docs"
+    myProfile = {
+      {
+        name :'Dhiraj',
+        location: 'ktm'
+      }
+    }
+    messages = {
+      ["hi","hello"]
+    }
+
+    addTwoNumbers = {
+      (firstNum,secondNum) => firstNum+secondNum
+    }
+
+    // passing function to the Header
+    onClickFirst={()=>alert('Clicked first button')}
+    onClickSecond = {()=>alert('Clicked second button')}
+    />
   );
 }
 
